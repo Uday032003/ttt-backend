@@ -43,6 +43,7 @@ io.on("connection", (socket) => {
     if (isPresent) {
       socket.join(data);
       player2 = socket.id;
+      socket.to(data).emit("another_player_joined");
     }
     socket.emit("player2_found_a_room_or_not", { player: player2, isPresent });
   });
