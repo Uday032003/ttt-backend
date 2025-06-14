@@ -10,7 +10,14 @@ const server = app.listen(3001, () => {
 
 const io = new Server(server, {
   cors: {
+<<<<<<< HEAD
     origin: ["http://localhost:3000", "https://tic-tac-toe-frontend-ebon.vercel.app"],
+=======
+    origin: [
+      "http://localhost:3000",
+      "https://tic-tac-toe-frontend-ebon.vercel.app/",
+    ],
+>>>>>>> 70025bb (new update)
     methods: ["GET", "POST"],
   },
 });
@@ -53,5 +60,13 @@ io.on("connection", (socket) => {
       player: player2 === socket.id ? player1 : player2,
       content: player2 === socket.id ? "cross" : "circle",
     });
+  });
+
+  socket.on("rematch", (data) => {
+    socket.to(data).emit("rematch_confirmation");
+  });
+
+  socket.on("rematch_confirmed", (data) => {
+    io.to(data).emit("rematch_start");
   });
 });
