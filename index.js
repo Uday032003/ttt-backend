@@ -10,14 +10,7 @@ const server = app.listen(3001, () => {
 
 const io = new Server(server, {
   cors: {
-<<<<<<< HEAD
-    origin: ["http://localhost:3000", "https://tic-tac-toe-frontend-ebon.vercel.app"],
-=======
-    origin: [
-      "http://localhost:3000",
-      "https://tic-tac-toe-frontend-ebon.vercel.app/",
-    ],
->>>>>>> 70025bb (new update)
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST"],
   },
 });
